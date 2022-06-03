@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# modify as needed ('bullseye', 'buster', 'stretch', 'jessie')
+DEBIAN_VERSION='bullseye'
 
 # update software sources
 sudo apt update
@@ -14,7 +16,7 @@ sudo apt install ca-certificates curl gnupg lsb-release -y
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 # add docker repo to apt sources
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $DEBIAN_VERSION stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # update software sources (since docker repo is now present)
 sudo apt update

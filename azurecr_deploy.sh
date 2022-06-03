@@ -8,7 +8,7 @@ docker build -t $IMAGE_NAME .
 # start the container locally for testing
 docker run --name=$IMAGE_NAME --rm -p1337:1337 -d $IMAGE_NAME
 
-# stop the container if everything is working normally
+# check http://localhost:1337 then stop the container if everything is working normally
 docker stop $IMAGE_NAME
 
 # login to azure
@@ -17,8 +17,8 @@ az login
 # choose a name for your resource group
 RG='RG-Containers'
 
-# choose a name for your azure container registry (unique across azure)
-ACR_NAME='AzureContainerRegistryName'
+# choose a name for your azure container registry (must be unique across azure)
+ACR_NAME='CHANGE_ME_AzureContainerRegistryName'
 
 # choose region to deploy into
 REGION='eastus'
@@ -36,7 +36,7 @@ az acr login --name $ACR_NAME
 az acr show --name $ACR_NAME --query loginServer --output table
 
 # login server for your container registry (from output above)
-ACR_SERVER='AzureContainerRegistryLoginServer'
+ACR_SERVER='CHANGE_ME_AzureContainerRegistryLoginServer'
 
 # list local images
 docker images
@@ -57,8 +57,8 @@ az acr repository list --name $ACR_NAME --output table
 az acr repository show-tags --name $ACR_NAME --repository $IMAGE_NAME --output table
 
 # run the acr_create_spn.sh script to create service princial then paste credentials here
-SPN_ID=''
-SPN_PW=''
+SPN_ID='CHANGE_ME'
+SPN_PW='CHANGE_ME'
 
 # select a dns prefix for your container (<blinkerfluids>.eastus.azurecontainer.io)
 DNS_LABEL='blinkerfluids'

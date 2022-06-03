@@ -2,7 +2,7 @@
 
 # Install and Patch Azure CLI on Kali Linux
 
-# modify as needed
+# modify as needed ('bullseye', 'buster', 'stretch', 'jessie')
 DEBIAN_VERSION='bullseye'
 
 # install azure cli
@@ -14,7 +14,7 @@ sudo touch /etc/apt/preferences.d/azure-cli.pref
 # tell debian to prefer microsoft's azure cli
 cat > '/etc/apt/preferences.d/azure-cli.pref' <<EOF
 Package: *
-Pin: Release o=azure-cli bullseye
+Pin: Release o=azure-cli $DEBIAN_VERSION
 Pin-Priority: 600
 EOF
 

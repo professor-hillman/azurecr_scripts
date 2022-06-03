@@ -5,9 +5,11 @@
 # ACR_NAME: The name of your Azure Container Registry (use registry name from the main script)
 # SERVICE_PRINCIPAL_NAME: Must be unique within your AD tenant (choose your own name)
 
-# CHANGE THESE!!
-ACR_NAME='AzureContainerRegistryName' 
-SERVICE_PRINCIPAL_NAME='ServicePrincipalName'
+# Change this to match the ACR name you created in the main script
+ACR_NAME='CHANGE_ME_AzureContainerRegistryName'
+
+# Choose a unique name for this service principal ('dockerd', 'acrd', 'dockworker', 'dockergrunt', etc.)
+SERVICE_PRINCIPAL_NAME='CHANGE_ME_ServicePrincipalName'
 
 # Obtain the full registry ID
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query "id" --output tsv)
